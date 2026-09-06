@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de aves</title>    
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+
+<body>
+
+    <main>
+        <form class= formulario id="filtro-formulario">
+
+            <p>Los campos marcados con * son obligatorios.</p>
+            
+            <fieldset>
+                <legend>Filtros</legend>
+               
+                <label for="tipo-ave">Tipo de ave:<span>*</span> </label>
+                <select id="tipo-ave" name="tipo-ave">
+                    <option value="--seleccionar--">--seleccionar--</option>
+                    <option value="rapaces">Aves rapaces</option>
+                    <option value="corredoras">Aves corredoras</option>
+                    <option value="pájaros">Pájaros</option>
+                    <option value="aves zancudas">Aves zancudas</option>
+                    <option value="aves acuáticas">Aves acuáticas</option>
+                    <option value="aves gallináceas">Aves gallináceas</option>
+                    <option value="aves trepadoras">Aves trepadoras</option>
+                </select>
+
+                <label for="ordenar-por">Ordenar por:<span>*</span> </label>
+                <select id="ordenar-por" name="ordenar-por">
+                    <option value="--seleccionar--">--seleccionar--</option>
+                    <option value="fecha">Fecha avistamiento </option>
+                    <option value="lugar">Lugar del avistamiento </option>
+                </select>
+
+                <label for="orden">Orden:<span>*</span> </label>
+                <select id="orden" name="orden">
+                    <option value="--seleccionar--">--seleccionar--</option>
+                    <option value="ascendente">Ascendente </option>
+                    <option value="descendente">Descendente </option>
+                </select>
+                    
+                <button type="submit">Aplicar filtros</button>
+                <button type="reset">Limpiar</button>
+
+            </fieldset>
+        
+        </form>
+
+        <section id="seccion-resultados" style="display: none;">
+
+            <h1>Avistamientos encontrados</h1>
+
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de ave </th>
+                        <th>Nombre de ave </th>
+                        <th>Lugar </th>
+                        <th>Fecha </th>
+                        <th>Hora </th>
+                        <th>Evidencia</th>
+
+                    </tr>
+                </thead>
+
+
+
+                <tbody>
+                  <tr>
+                     <td>Aves rapaces</td>
+                     <td>Cóndor</td>
+                     <td>Región de Coquimbo</td>
+                     <td>2025-08-20</td>
+                     <td>15:30</td>
+                     <td><img src="img/condor.png" alt="Cóndor" width="150"></td>
+                  </tr>
+
+                   <tr>
+                     <td>Aves acuáticas</td>
+                     <td>Cisne</td>
+                     <td>Valdivia</td>
+                     <td>2026-02-21</td>
+                     <td>10:15</td>
+                     <td><img src="img/cisne.png" alt="Cisne" width="150"></td>
+                     
+                  </tr>
+
+                  <tr>
+                     <td>Pájaros</td>
+                     <td>Chincol</td>
+                     <td>Santiago</td>
+                     <td>2026-05-22</td>
+                     <td>08:45</td>
+                     <td><img src="img/chincol.png" alt="Chincol" width="150"></td>
+                  </tr>
+
+                </tbody>
+
+
+            </table>
+
+            <nav aria-label="paginación">
+
+            <a href="#">1</a>
+            <a href="listadopag2.html">2</a>
+
+            </nav>
+
+    
+        </section>
+
+
+
+        <br>
+        <a href="index.html">Volver al inicio</a>
+
+    </main>
+
+
+
+<script src="js/listado.js"></script>
+</body>
+
+</html>

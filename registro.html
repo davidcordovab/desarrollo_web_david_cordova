@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro voluntario</title>    
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body> 
+   <main>
+
+   
+    <h1> Registro voluntario  </h1>
+
+    <form class="formulario" id="registro-formulario">
+
+        <p>Los campos marcados con * son obligatorios.</p>
+
+        <fieldset>
+            <legend>Datos personales</legend>
+
+            <label for="nombre">Nombre: <span>*</span></label>
+            <input type="text" id="nombre" name="nombre">
+            
+            <label for="apellido">Apellido: <span>*</span></label>
+            <input type="text" id="apellido" name="apellido">
+            
+            <label for="rut">RUT: <span>*</span></label>
+            <input type="text" id="rut" name="rut">
+        </fieldset>
+
+
+        <fieldset>
+            <legend>Datos de contacto</legend>
+            
+            <label for="celular">Número de celular: <span>*</span></label>
+            <input type="tel" id="celular" name="celular">
+
+            <label for="correo">Correo: <span>*</span></label>
+            <input type="email" id="correo" name="correo">
+        </fieldset>
+
+
+        <fieldset>
+            <legend>Datos postales</legend>
+
+            <label for="region">Región: <span>*</span></label>
+            <input type="text" id="region" name="region">
+
+            <label for="comuna">Comuna: <span>*</span></label>
+            <input type="text" id="comuna" name="comuna">
+        </fieldset>
+
+        <button type="submit">Registrarse</button>
+        <button type="reset">Limpiar</button>
+    
+    </form>
+    
+    <br>
+
+    <a href="index.html">Volver al inicio</a>
+    </main>
+
+    <script src="js/registro.js"></script>
+
+
+</body>
+
+
+</html>
+
+
+
+
+
+

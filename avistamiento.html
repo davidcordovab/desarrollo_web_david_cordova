@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informar avistamiento</title>    
+    
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <main>
+
+        <h1>Informe de avistamiento</h1>
+
+        <form class="formulario" id="avistamiento-formulario">
+
+            <p>Los campos marcados con * son obligatorios.</p>
+
+            <label for="tipoave">Tipo del ave:<span>*</span> </label>
+            <input type="text" id="tipoave" name="tipoave"> 
+
+            <label for="nombreave">Nombre del ave:<span>*</span> </label>
+            <input type="text" id="nombreave" name="nombreave">
+
+            <label for="lugar">Lugar del avistamiento:<span>*</span> </label>
+            <input type="text" id="lugar" name="lugar"> 
+
+            <label for="fecha">Fecha del avistamiento:<span>*</span> </label>
+            <input type="date" id="fecha" name="fecha" min="1900-01-01" max="2026-09-07">
+
+            <label for="hora">Hora del avistamiento:<span>*</span> </label>
+            <input type="time" id="hora" name="hora">
+
+            <label for="evidencia">Foto o video:<span>*</span> </label>
+            <input type="file" id="evidencia" name="evidencia" accept="image/*,video/*">
+
+
+
+            <button type="submit">Informar el avistamiento</button>
+            <button type="reset">Limpiar</button>
+
+
+        </form>
+        
+        <br>
+
+        <a href="index.html">Volver al inicio</a>
+    </main>
+
+    <script src="js/avistamiento.js"></script>
+</body>
+
+
+
+</html>

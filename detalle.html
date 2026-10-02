@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Avistamiento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <main>
+        <h1>Información Detallada del Avistamiento</h1>
+        
+        <section>
+            <h2>Datos del Registro</h2>
+            <ul>
+                <li><strong>Ave observada:</strong> {{ avistamiento.ave.nombre }}</li>
+                <li><strong>Lugar del avistamiento:</strong> {{ avistamiento.lugar }}</li>
+                <li><strong>Fecha y Hora:</strong> {{ avistamiento.fecha_hora }}</li>
+                <li><strong>Voluntario (ID):</strong> {{ avistamiento.voluntario_id }}</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Evidencia Física</h2>
+            {% if avistamiento.registros %}
+        
+                <img src="{{ url_for('static', filename='uploads/' + avistamiento.registros[0].nombre_archivo) }}" style="max-width: 600px;" alt="Evidencia del avistamiento">
+            {% else %}
+                <p>El usuario no adjuntó una foto o video para este registro.</p>
+            {% endif %}
+        </section>
+        
+        <br>
+        <a href="{{ url_for('listado') }}">Volver al listado</a>
+
+    </main>
+</body>
+</html>

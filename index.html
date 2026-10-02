@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de avistamientos de aves</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+
+<body>
+    <main>
+        <h1>Registro de avistamiento de aves</h1>
+        <p>Sistema para registrar y consultar avistamiento de aves</p>
+
+         <nav aria-label="Navegación principal">
+            <ul>
+                <li><a href="/registro">Registrar voluntario</a></li>
+                <li><a href="/avistamiento">Informar avistamiento</a></li>
+                <li><a href="/listado">Consultar avistamientos</a></li>
+                <li><a href="/indicadores">Estadísticas (indicadores y métricas)</a></li>
+            </ul>
+         </nav>
+
+         
+         <section>
+            <h2>Últimos 2 avistamientos registrados</h2>
+            <ul>
+                {% for avistamiento in avistamientos %}
+                    <li>
+                        <strong>Fecha:</strong> {{ avistamiento.fecha_hora }} <br>
+                        <strong>Lugar:</strong> {{ avistamiento.lugar }}
+                    </li>
+                {% else %}
+                    <li>Aún no hay avistamientos registrados en el sistema.</li>
+                {% endfor %}
+            </ul>
+         </section>
+
+    </main>
+</body>
+
+</html>

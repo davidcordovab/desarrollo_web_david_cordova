@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informar avistamiento</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+
+<body>
+    <main>
+        <h1>Informe de avistamiento</h1>
+
+        <form class="formulario" id="avistamiento-formulario" action="/avistamiento" method="POST" enctype="multipart/form-data">
+
+            <p>Los campos marcados con * son obligatorios.</p>
+
+            <fieldset>
+                <legend>Datos del Registro</legend>
+                
+                <label for="voluntario">¿Quién reporta?:<span>*</span> </label>
+                <select id="voluntario" name="voluntario">
+                    <option value="">Seleccione un voluntario...</option>
+                    {% for vol in voluntarios %}
+                        <option value="{{ vol.id }}">{{ vol.nombre }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="ave">Ave avistada:<span>*</span> </label>
+                <select id="ave" name="ave">
+                    <option value="">Seleccione un ave...</option>
+                    {% for ave in aves %}
+                        <option value="{{ ave.id }}">{{ ave.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Detalles del Avistamiento</legend>
+
+                <label for="lugar">Lugar del avistamiento:<span>*</span> </label>
+                <input type="text" id="lugar" name="lugar"> 
+
+                <label for="fecha">Fecha del avistamiento:<span>*</span> </label>
+                <input type="date" id="fecha" name="fecha" min="1900-01-01" max="2026-10-02">
+
+                <label for="hora">Hora del avistamiento:<span>*</span> </label>
+                <input type="time" id="hora" name="hora">
+            </fieldset>
+
+            <fieldset>
+                <legend>Evidencia</legend>
+                
+                <label for="evidencia">Foto o video:<span>*</span> </label>
+                <input type="file" id="evidencia" name="evidencia" accept="image/*,video/*">
+            </fieldset>
+
+            <button type="submit">Informar el avistamiento</button>
+            <button type="reset">Limpiar</button>
+
+        </form>
+        
+        <br>
+        <a href="/">Volver al inicio</a>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/avistamiento.js') }}"></script>
+</body>
+</html>

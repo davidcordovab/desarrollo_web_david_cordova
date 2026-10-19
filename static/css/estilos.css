@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color:#333;
+
+}
+
+
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+
+h1 {
+    text-align: center;
+    margin: 30px 0;
+    color: #2f4f4f;
+}
+
+
+h2 {
+    margin-top: 30px;
+}
+
+
+form {
+    margin-bottom: 30px;
+}
+
+fieldset {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #aaa;
+    background-color: whitesmoke; 
+}
+
+
+legend {
+    font-weight: bold;
+    padding: 0 8px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+    border-radius: 4px; 
+}
+
+
+button {
+    padding: 10px 18px;
+    margin-top: 15px;
+    margin-right: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #2f4f4f;
+    color: white;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #aaa;
+    padding: 8px;
+    text-align: left;
+}
+
+
+th {
+    background-color: #2f4f4f;
+    color: white;
+}
+
+
+nav {
+    margin-top: 20px;
+}
+
+
+nav a {
+    margin-right: 10px;
+}
+

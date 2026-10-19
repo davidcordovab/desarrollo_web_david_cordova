@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Avistamiento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <main>
+        <h1>Información Detallada del Avistamiento</h1>
+        
+        <section>
+            <h2>Datos del Registro</h2>
+            <ul>
+                <li><strong>Ave observada:</strong> {{ avistamiento.ave.nombre }}</li>
+                <li><strong>Lugar del avistamiento:</strong> {{ avistamiento.lugar }}</li>
+                <li><strong>Fecha y Hora:</strong> {{ avistamiento.fecha_hora }}</li>
+                <li><strong>Voluntario (ID):</strong> {{ avistamiento.voluntario_id }}</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Evidencia Física</h2>
+            {% if avistamiento.registros %}
+        
+                <img src="{{ url_for('static', filename='uploads/' + avistamiento.registros[0].nombre_archivo) }}" style="max-width: 600px;" alt="Evidencia del avistamiento">
+            {% else %}
+                <p>El usuario no adjuntó una foto o video para este registro.</p>
+            {% endif %}
+        </section>
+
+
+        <form id="form-comentario">
+            <p>Los campos marcados con * son obligatorios </p>
+
+            <label for="nombre">Nombre: <span>*</span></label>
+            <input type="text" id="nombre" name="nombre" minlength="3" maxlength="50" required>
+
+            <label for="area_texto">Ingrese comentario: <span>*</span></label>
+            <textarea id="area_texto" name="comentario" minlength="5" rows="3" cols="40" required></textarea>
+
+            <button type="submit">Agregar comentario</button>
+            
+        </form>
+
+        <div id="lista_comentarios"> </div>
+        
+        <br>
+        <a href="{{ url_for('listado') }}">Volver al listado</a>
+
+    </main>
+
+   <script>
+    document.getElementById("form-comentario").addEventListener("submit", function(event){
+        
+        event.preventDefault();
+
+        const nombre = document.getElementById("nombre").value
+
+        const comentario = document.getElementById("area_texto").value
+
+        const avistamiento_id = "{{ avistamiento.id }}"
+
+        const datos = new FormData();
+
+        datos.append("nombre", nombre);
+        datos.append("texto", comentario)
+        datos.append("avistamiento_id", avistamiento_id)
+
+
+        fetch("/api/comentarios", {
+        method: "POST",
+        body: datos}).then(respuesta => respuesta.json()).then(data => {
+        
+        if (data.error){
+            alert(data.error);
+        }
+        else {
+        alert("Comentario agragado con exito")
+
+        document.getElementById("form-comentario").reset();
+        cargar_comentarios();
+        } 
+        
+    });
+    });
+
+
+
+
+
+        function cargar_comentarios(){
+
+        const avistamiento_id = "{{ avistamiento.id }}"
+
+        fetch("/api/comentarios/" + avistamiento_id).then(respuesta => respuesta.json()).then(data => {
+        
+        let contenidoHTML = "<ul>";
+        
+        data.forEach(c => {
+            contenidoHTML += 
+       
+            "<li>" + c.fecha + "-" + c.nombre +"-" +c.texto+ "</li>"
+            });
+
+        contenidoHTML += "</ul>";
+
+        document.getElementById("lista_comentarios").innerHTML = contenidoHTML;
+
+
+
+        })}
+
+    cargar_comentarios();
+
+</script>
+
+
+</body>
+</html>

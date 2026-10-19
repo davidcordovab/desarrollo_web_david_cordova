@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indicadores</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+</head>
+<body>
+    <main>
+        <h1>Indicadores y métricas</h1>
+
+        <section>
+            <h2>Avistamientos registrados por día</h2>
+        
+            <div id="grafico-dias" style="width: 100%; height: 400px;"></div>
+
+        </section>
+
+        <section>
+            <h2>Avistamiento por tipo de ave</h2>
+        
+            <div id="grafico-aves" style="width: 100%; height: 400px;"></div>
+
+        </section>
+
+        <section>
+            <h2>Voluntarios registrados por comuna</h2>
+            
+            <div id="grafico-comunas" style="width: 100%; height: 400px;"></div>
+
+        </section>
+
+        <br>
+        
+        <a href="/">Volver al inicio</a>
+    </main>
+
+
+
+    <script>
+    fetch("/api/estadisticas/avistamientos_por_dia").then(respuesta => respuesta.json()).then(data => {
+        let fechas = [];
+        let cantidades = [];
+        data.forEach(a => {
+            fechas.push(a.fecha);
+            cantidades.push(a.conteo);
+
+            Highcharts.chart("grafico-dias", {
+            chart: { type: "line" },
+            title: { text: "Avistamientos por Día" },
+            xAxis: { 
+                categories: fechas, 
+                title: { text: "Día" } 
+            },
+            yAxis: { 
+                title: { text: "Cantidad de avistamientos" },
+                allowDecimals: false 
+            },
+            series: [{ 
+                name: "Avistamientos", 
+                data: cantidades 
+            }]
+        });
+    });
+        });
+
+
+
+
+    fetch("/api/estadisticas/avistamientos_por_ave").then(respuesta => respuesta.json()).then(data => {
+        
+        let datos = [];
+                
+        data.forEach(a => {
+            datos.push({
+                name: a.nombre_ave,
+                y: a.conteo
+            });
+        });
+        
+        Highcharts.chart("grafico-aves", {
+            chart: { type: "pie" },
+            title: { text: "Avistamientos por Tipo de Ave" },
+            series: [{
+                name: "Cantidad",
+                colorByPoint: true,
+                data: datos
+                    }]
+                });
+            });
+
+
+    
+    fetch("/api/estadisticas/voluntarios_por_comuna").then(respuesta => respuesta.json()).then(data => {
+        
+        let comunas = [];
+        let cantidades = [];
+        
+        data.forEach(a => {
+            comunas.push(a.nombre_comuna);
+            cantidades.push(a.conteo_voluntario);
+        });
+        
+        Highcharts.chart("grafico-comunas", {
+            chart: { type: "column" },
+            title: { text: "Voluntarios por Comuna" },
+            xAxis: { 
+                categories: comunas,
+                title: { text: "Comuna" }},
+            yAxis: { 
+                title: { text: "Cantidad de voluntarios" },
+                allowDecimals: false},
+                
+                series: [{
+                    name: "Voluntarios",
+                    data: cantidades,
+                    color: "#28a745"
+                    }]
+                });
+            });
+
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>

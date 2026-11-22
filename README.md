@@ -4,9 +4,9 @@
 Aplicación web hecha con **Spring Boot 3.5**, **Java 17**, **JPA (MySQL)** y **Thymeleaf**, con llamadas asíncronas en JavaScript (`fetch`).
 
 ## Cómo ejecutar
-1. Ejecuta `tabla-nota.sql` en tu base de datos de avistamientos para crear la tabla `nota`.
-2. Revisa los datos de conexión a MySQL en `src/main/resources/application.properties`.
-3. Levanta el proyecto con `./mvnw spring-boot:run` y entra a <http://localhost:8080/buscador>.
+1. Ejecutar `tabla-nota.sql` en tu base de datos de avistamientos para crear la tabla `nota`.
+2. Revisar los datos de conexión a MySQL en `src/main/resources/application.properties`. (En mi caso el Mysql esta en el puerto 3307)
+3. Levantar el proyecto con `./mvnw spring-boot:run` o el run sobre Tarea4Application.java y entra a <http://localhost:8080/buscador>.
 
 ## Endpoints principales
 Método: GET; ruta: `/buscador`; lo que hace: Muestra la página del buscador de avistamientos

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buscador de avistamientos</title>
+    <link rel="stylesheet" th:href="@{/css/buscador.css}">
+    <script th:src="@{/js/buscador.js}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Buscador de avistamientos</h1>
+    </header>
+
+    <main>
+        <form id="form-buscador" role="search" autocomplete="off">
+            <label for="q">Buscar por nombre de ave, voluntario o comuna</label>
+            <input type="text" id="q" name="q" maxlength="100" placeholder="Escribe para buscar…">
+        </form>
+
+        <p id="estado" role="status" aria-live="polite">Escribe para buscar avistamientos.</p>
+
+        <div id="contenedor-tabla" class="contenedor-tabla" hidden>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Voluntario</th>
+                        <th scope="col">Día</th>
+                        <th scope="col">Ave</th>
+                        <th scope="col">Comuna</th>
+                        <th scope="col">Nota</th>
+                        <th scope="col">Evaluar</th>
+                    </tr>
+                </thead>
+                <tbody id="resultados"></tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
